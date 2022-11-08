@@ -17,9 +17,9 @@ async function readRidectory() {
 
 async function writeFileInfo(file) {
   let fileInfo = await fs.stat(path.resolve(folderPath, file.name));
-  
-  let fileName = file.name;
-  let fileExtension = path.extname(fileName).slice(1);
+  file = file.name
+  let fileName = path.basename(file, path.extname(file));
+  let fileExtension = path.extname(file).slice(1);
   let fileSize = fileInfo.size / 1024;
   console.log(`${fileName} - ${fileExtension} - ${fileSize.toFixed(3)}kb`);
 }
