@@ -22,7 +22,8 @@ async function readRidectory(directory) {
 
 async function copyFolder() {
   try {
-    await fs.rm(copiedToDir, {recursive: true});
+    fs.a
+    await fs.rm(copiedToDir, {recursive: true, force: true});
     await fs.mkdir(copiedToDir, {recursive: true});
     
     let copiedFiles = await readRidectory(copiedFromDir);
@@ -30,7 +31,7 @@ async function copyFolder() {
       await fs.copyFile(path.resolve(copiedFromDir, copiedFile.name), path.resolve(copiedToDir, copiedFile.name))
     }
   } catch(err) {
-    console.error(err.message);
+    console.log(err);
   }
 }
 
