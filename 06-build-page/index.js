@@ -46,7 +46,7 @@ async function mergeHtml() {
 }
 
 async function copyAssets() {
-  await fs.rm(path.resolve(distPath, 'assets'), { recursive: true});
+  await fs.rm(path.resolve(distPath, 'assets'), { recursive: true, force: true});
   let destAssetsDirectory = await fs.mkdir(path.resolve(distPath, 'assets'), {recursive: true});
   if(!destAssetsDirectory) {
     destAssetsDirectory = path.resolve(distPath, 'assets');
